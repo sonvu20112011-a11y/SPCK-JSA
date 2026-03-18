@@ -1,47 +1,37 @@
-        /* Tùy chỉnh CSS: Thiết lập font chữ và thanh cuộn */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        
-        :root {
-            --primary-color: #4f46e5; /* Màu tím Indigo */
-            --bg-dark: #1f2937; /* Màu nền tối */
-            --text-light: #e5e7eb; /* Màu chữ sáng */
-        }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Nền rất tối */
-            color: var(--text-light);
-            min-height: 100vh;
-        }
+:root {
+    --primary: #6366f1;
+    --bg: #111827;
+}
 
-        /* Tùy chỉnh thanh cuộn cho giao diện tối */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1f2937;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4b5563;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: #e5e7eb;
+    min-height: 100vh;
+}
 
-        /* Hiệu ứng cho nút khi hover */
-        .btn-primary {
-            transition: transform 0.1s, box-shadow 0.2s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.4);
-        }
-        
-        /* Đảm bảo thanh hành động luôn hiển thị trên màn hình lớn */
-        @media (min-width: 1024px) {
-            .lg\:sticky {
-                position: sticky;
-                top: 6rem; /* Điều chỉnh vị trí dính (ví dụ: 6rem tương đương với top-24 trong Tailwind) */
-            }
-        }
+.page-content {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.page-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1f2937; }
+::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
