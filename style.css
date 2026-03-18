@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #3f51b5;
+    --text-dark: #333;
+    --text-light: #555;
+    --bg-light: #f4f4f9;
+    --border-color: #ddd;
+}
+
+body {
+    background-color: var(--bg-light); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: var(--primary-color); 
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 0;
+    background-color: #e8eaf6;
+}
+
+p, li {
+    text-align: left;
+    color: var(--text-light); 
+}
+
+h2 {
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+#my-photo img {
+
+    width: 100%; 
+    max-width: 250px;
+    height: auto;
+    display: block; 
+    margin: 20px auto; 
+    border: 3px solid var(--primary-color);
+    border-radius: 50%; 
+    object-fit: cover;
+}
+
+.list-border {
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 15px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.list-border li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.list-border li:last-child {
+    border-bottom: none;
+}
+
+.social-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#back-to-top {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: inline-block; 
+}
+
+#back-to-top:hover {
+    background-color: #536dfe;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--text-dark);
+    color: #bbb;
+    margin-top: 30px;
+}

@@ -1,0 +1,27 @@
+/* Đảm bảo nội dung không bị dính vào mép trên của trình duyệt và thêm màu nền */
+body {
+    padding-top: 70px; /* Đặt padding top bằng chiều cao của navbar (fixed-top) */
+    background-color: #f8f9fa; /* Màu nền nhẹ */
+}
+
+/* Kiểu dáng cho Card ở trang chủ */
+.card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển động mượt mà */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Nâng card lên một chút khi di chuột qua */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important; /* Đổ bóng mạnh hơn */
+}
+
+.card-img-top {
+    height: 200px; /* Chiều cao cố định cho hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh được căn chỉnh và không bị méo */
+}
+
+/* Đảm bảo ảnh trong trang chi tiết responsive */
+figure img {
+    max-width: 100%;
+    height: auto;
+}
