@@ -7,62 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #111827; 
-            color: #e5e7eb; 
-            min-height: 100vh; 
-            margin: 0;
-        }
-        
-        /* Hiệu ứng chuyển trang */
+        body { font-family: 'Inter', sans-serif; background-color: #111827; color: #e5e7eb; min-height: 100vh; margin: 0; }
         .page-content { display: none; animation: fadeIn 0.4s ease-out; }
         .page-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        
         .game-card:hover { transform: translateY(-8px); border-color: #6366f1; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3); }
-
-        /* Chỉnh sửa quan trọng: Căn giữa Form Đăng nhập/Đăng ký */
-        .auth-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 80px); /* Căn giữa theo chiều dọc trừ đi chiều cao header */
-            padding: 20px;
-        }
-
-        .form-wrapper {
-            background-color: #1f2937;
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            width: 100%;
-            max-width: 450px; /* Giới hạn độ rộng để không bị lệch */
-            border: 1px solid #374151;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
+        .auth-container { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 80px); padding: 20px; }
+        .form-wrapper { background-color: #1f2937; padding: 2.5rem; border-radius: 1.5rem; width: 100%; max-width: 450px; border: 1px solid #374151; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
         .form-control { margin-bottom: 1.5rem; }
-        .form-control input {
-            width: 100%;
-            background-color: #374151;
-            border: 1px solid #4b5563;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            color: white;
-            outline: none;
-            transition: border-color 0.2s;
-        }
+        .form-control input { width: 100%; background-color: #374151; border: 1px solid #4b5563; padding: 0.75rem 1rem; border-radius: 0.5rem; color: white; outline: none; transition: border-color 0.2s; }
         .form-control input:focus { border-color: #6366f1; }
     </style>
 </head>
 <body>
-
     <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur border-b border-indigo-700/30">
         <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="App.showPage('homePage')">
@@ -71,12 +28,9 @@
                 </svg>
                 <span class="text-2xl font-black text-white tracking-tighter italic">GAME ĐI!</span>
             </div>
-
             <div class="flex-1 max-w-md">
-                <input type="text" id="searchInput" oninput="App.handleSearch()" placeholder="Tìm kiếm game..." 
-                       class="w-full bg-gray-800 border border-gray-700 rounded-full px-5 py-2 text-sm text-white focus:ring-2 focus:ring-indigo-500 outline-none">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm game..." class="w-full bg-gray-800 border border-gray-700 rounded-full px-5 py-2 text-sm text-white focus:ring-2 focus:ring-indigo-500 outline-none">
             </div>
-
             <div class="flex items-center space-x-6">
                 <span id="userAuth" class="hidden text-green-400 text-sm font-bold">● Online</span>
                 <button id="navLoginBtn" onclick="App.showPage('loginPage')" class="text-gray-400 hover:text-white font-medium transition">Đăng nhập</button>
@@ -90,9 +44,7 @@
             <h1 class="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">Chơi Đi Chờ Chi!</h1>
             <p class="text-gray-400 text-lg max-w-2xl mx-auto px-4">Khám phá siêu phẩm 2026 bởi Vũ Hoàng Sơn.</p>
         </section>
-        <div class="container mx-auto px-4 pb-20">
-            <div id="gameGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-        </div>
+        <div class="container mx-auto px-4 pb-20"><div id="gameGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div></div>
     </main>
 
     <main id="detailPage" class="page-content container mx-auto px-4 py-10">
@@ -122,12 +74,8 @@
             <div class="form-wrapper">
                 <h2 class="text-3xl font-bold mb-6 text-white text-center">Đăng nhập</h2>
                 <form onsubmit="App.handleLogin(event)">
-                    <div class="form-control">
-                        <input type="text" id="loginUser" placeholder="Tên đăng nhập (sonvu)" required />
-                    </div>
-                    <div class="form-control">
-                        <input type="password" id="loginPass" placeholder="Mật khẩu (2011)" required />
-                    </div>
+                    <div class="form-control"><input type="text" id="loginUser" placeholder="Tên đăng nhập" required /></div>
+                    <div class="form-control"><input type="password" id="loginPass" placeholder="Mật khẩu" required /></div>
                     <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition">Vào Game</button>
                 </form>
                 <p class="mt-6 text-center text-gray-400 text-sm">Chưa có tài khoản? <a href="#" onclick="App.showPage('registerPage')" class="text-indigo-400 hover:underline">Đăng ký ngay</a></p>
@@ -140,15 +88,8 @@
             <div class="form-wrapper">
                 <h2 class="text-3xl font-bold mb-6 text-white text-center">Đăng ký</h2>
                 <form onsubmit="App.handleRegister(event)">
-                    <div class="form-control">
-                        <input type="text" placeholder="Tên người dùng" required />
-                    </div>
-                    <div class="form-control">
-                        <input type="email" placeholder="Email" required />
-                    </div>
-                    <div class="form-control">
-                        <input type="password" placeholder="Mật khẩu" required />
-                    </div>
+                    <div class="form-control"><input type="text" id="regUser" placeholder="Tên đăng nhập mới" required /></div>
+                    <div class="form-control"><input type="password" id="regPass" placeholder="Mật khẩu mới" required /></div>
                     <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition">Tạo tài khoản</button>
                 </form>
                 <p class="mt-6 text-center text-gray-400 text-sm">Đã có tài khoản? <a href="#" onclick="App.showPage('loginPage')" class="text-indigo-400 hover:underline">Đăng nhập</a></p>
@@ -169,82 +110,6 @@
         </div>
     </div>
 
-    <script>
-        const App = {
-            games: [
-                { id: 1, name: "Shadow Chronicles", tag: "Hành động", price: 199000, image: "shadow_chronicles.png", publisher: "NovaPlay Studios", desc: "Hành trình bóng đêm kịch tính.", config: ["RAM: 8GB", "GPU: GTX 1060"] },
-                { id: 2, name: "Cyber Neon 2077", tag: "Viễn tưởng", price: 299000, image: "cyber_neon_2077.png", publisher: "NovaPlay Studios", desc: "Thế giới tương lai rực rỡ.", config: ["RAM: 16GB", "GPU: RTX 3060"] },
-                { id: 3, name: "Elden Mythos", tag: "Thế giới mở", price: 499000, image: "elden_mythos.png", publisher: "NovaPlay Studios", desc: "Khám phá vùng đất thần thoại.", config: ["RAM: 12GB", "GPU: GTX 1660 Ti"] }
-            ],
-
-            init() { this.renderHomeGrid(this.games); },
-
-            renderHomeGrid(data) {
-                const grid = document.getElementById('gameGrid');
-                grid.innerHTML = data.map(game => `
-                    <div class="game-card bg-gray-800/50 rounded-3xl overflow-hidden border border-gray-700 transition cursor-pointer" onclick="App.showDetailPage(${game.id})">
-                        <img src="${game.image}" class="h-56 w-full object-cover">
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">${game.tag}</span>
-                            <h3 class="text-2xl font-black text-white mt-1 mb-4">${game.name}</h3>
-                            <span class="text-green-400 font-black text-xl">${game.price.toLocaleString('vi-VN')}đ</span>
-                        </div>
-                    </div>
-                `).join('');
-            },
-
-            showPage(id) {
-                document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-                document.getElementById(id).classList.add('active');
-                window.scrollTo(0, 0);
-            },
-
-            showDetailPage(id) {
-                const game = this.games.find(g => g.id === id);
-                this.currentGame = game;
-                document.getElementById('detailImage').src = game.image;
-                document.getElementById('detailTitle').textContent = game.name;
-                document.getElementById('detailPublisher').textContent = "Nhà phát hành: " + game.publisher;
-                document.getElementById('detailTag').textContent = game.tag;
-                document.getElementById('detailDesc').textContent = game.desc;
-                document.getElementById('detailPrice').textContent = game.price.toLocaleString('vi-VN') + "đ";
-                document.getElementById('detailConfig').innerHTML = game.config.map(c => `<li>• ${c}</li>`).join('');
-                this.showPage('detailPage');
-            },
-
-            handleLogin(e) {
-                e.preventDefault();
-                const u = document.getElementById('loginUser').value;
-                const p = document.getElementById('loginPass').value;
-                if(u === "sonvu" && p === "2011") {
-                    this.utils.showModal("Chào mừng", "Đăng nhập thành công!");
-                    document.getElementById('userAuth').classList.remove('hidden');
-                    document.getElementById('navLoginBtn').classList.add('hidden');
-                    this.showPage('homePage');
-                } else {
-                    this.utils.showModal("Thất bại", "Sai tài khoản hoặc mật khẩu!");
-                }
-            },
-
-            handleRegister(e) {
-                e.preventDefault();
-                this.utils.showModal("Thông báo", "Đăng ký thành công! Hãy đăng nhập.");
-                this.showPage('loginPage');
-            },
-
-            handleBuy() { this.utils.showModal("Thành công", `Đã mua ${this.currentGame.name}!`); },
-
-            utils: {
-                showModal(t, m) {
-                    document.getElementById('mTitle').textContent = t;
-                    document.getElementById('mMsg').textContent = m;
-                    document.getElementById('modal').classList.replace('hidden', 'flex');
-                },
-                closeModal() { document.getElementById('modal').classList.replace('flex', 'hidden'); }
-            }
-        };
-
-        window.onload = () => App.init();
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
