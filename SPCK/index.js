@@ -49,7 +49,7 @@ const App = {
         this.showPage('detailPage');
     },
 
-    // --- FIX LỖI ĐĂNG KÝ ---
+    // --- XỬ LÝ ĐĂNG KÝ ---
     handleRegister(event) {
         event.preventDefault();
         const user = document.getElementById('regUser').value.trim();
@@ -73,7 +73,7 @@ const App = {
         this.showPage('loginPage');
     },
 
-    // --- FIX LỖI ĐĂNG NHẬP ---
+    // --- XỬ LÝ ĐĂNG NHẬP ---
     handleLogin(event) {
         event.preventDefault();
         const inputUser = document.getElementById('loginUser').value.trim();
@@ -106,7 +106,25 @@ const App = {
         if (sessionStorage.getItem('isLoggedIn') === 'true') {
             document.getElementById('userAuth').classList.remove('hidden');
             document.getElementById('navLoginBtn').classList.add('hidden');
+        } else {
+            // Đảm bảo ẩn/hiện chuẩn xác khi chưa đăng nhập
+            document.getElementById('userAuth').classList.add('hidden');
+            document.getElementById('navLoginBtn').classList.remove('hidden');
         }
+    },
+
+    // --- TÍNH NĂNG MỚI: ĐĂNG XUẤT ---
+    handleLogout() {
+        // Xóa trạng thái đăng nhập trong bộ nhớ trình duyệt
+        sessionStorage.removeItem('isLoggedIn');
+        
+        // Cập nhật lại giao diện Header
+        document.getElementById('userAuth').classList.add('hidden');
+        document.getElementById('navLoginBtn').classList.remove('hidden');
+        
+        // Thông báo và chuyển hướng về Trang chủ
+        this.utils.showModal("Thông báo", "Bạn đã đăng xuất thành công!");
+        this.showPage('homePage');
     },
 
     handleSearch() {
@@ -115,7 +133,18 @@ const App = {
         this.renderHomeGrid(filteredGames);
     },
 
-    handleBuy() { this.utils.showModal("Xác nhận", `Cảm ơn đã mua ${this.currentGame.name}!`); },
+    // --- TÍNH NĂNG MỚI: BẮT BUỘC ĐĂNG NHẬP ĐỂ MUA GAME ---
+    handleBuy() { 
+        // Kiểm tra xem đã đăng nhập chưa
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            this.utils.showModal("Thông báo", "Vui lòng đăng nhập để thực hiện mua game!");
+            this.showPage('loginPage'); // Chuyển sang trang đăng nhập
+            return; // Dừng hàm tại đây, không cho chạy tiếp xuống dưới
+        }
+        
+        // Nếu đã đăng nhập thì cho phép mua bình thường
+        this.utils.showModal("Xác nhận", `Cảm ơn đã mua ${this.currentGame.name}!`);
+    },
 
     utils: {
         showModal(title, message) {
